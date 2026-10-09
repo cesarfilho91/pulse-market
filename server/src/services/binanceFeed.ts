@@ -4,7 +4,7 @@ import { MarketStore } from './marketStore.js';
 import { normalizeTicker } from '../utils/normalizeTicker.js';
 import type { BinanceStreamMessage } from '../types.js';
 
-const STREAM_URL = 'wss://stream.binance.com:9443/stream?streams=btcusdt@ticker/ethusdt@ticker/solusdt@ticker/bnbusdt@ticker/xrpusdt@ticker';
+const STREAM_URL = 'wss://data-stream.binance.vision/stream?streams=btcusdt@ticker/ethusdt@ticker/solusdt@ticker/bnbusdt@ticker/xrpusdt@ticker';
 const RECONNECT_DELAY_MS = 2_000;
 
 export class BinanceFeed {
