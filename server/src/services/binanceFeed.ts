@@ -62,8 +62,15 @@ export class BinanceFeed {
       }
     });
 
-    socket.on('error', () => socket.close());
-    socket.on('close', () => {
+    socket.on('error', (error) => {
+      console.error('[Binance WebSocket] Erro:', error.message);
+      socket.close();
+    });
+    socket.on('close', (code, reason) => {
+      console.error(
+        `[Binance WebSocket] Conexão fechada. Código: ${code}. Motivo: ${reason.toString() || 'não informado'}`
+      );
+
       this.connected = false;
       if (this.stopped) return;
       this.io.emit('feed:status', { status: 'reconnecting' });
